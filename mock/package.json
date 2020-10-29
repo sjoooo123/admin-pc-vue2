@@ -1,0 +1,18 @@
+{
+  "name": "kr-mock-api",
+  "version": "1.0.0",
+  "description": "使用express、mockjs、webpack-api-mocker为前端开发的api模拟数据接口项目",
+  "main": "app.js",
+  "repository": "https://code.keywaysoft.com/wangsheng/kr-mock-api.git",
+  "author": "wangsheng<a416237796@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "node app"
+  },
+  "dependencies": {
+    "eslint": "^5.5.0",
+    "express": "^4.16.4",
+    "mockjs": "^1.0.1-beta3",
+    "webpack-api-mocker": "^1.6.1"
+  }
+}

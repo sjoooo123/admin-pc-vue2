@@ -1,0 +1,19 @@
+stages:
+  - build
+
+#services:
+#  - docker:dind
+
+#variables:
+#  DOCKER_HOST: tcp://localhost:2375
+
+build_app:
+  image: registry.xueluo.xyz/vue:latest
+  stage: build
+  only:
+    - test
+  tags:
+    - k8s_dev
+  script:
+    - cnpm install && cnpm run build
+    - scp -P 2333 -r dist/ sckr@192.168.13.133:/home/sckr/project/jpt/1/frontend/

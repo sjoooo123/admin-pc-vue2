@@ -1,0 +1,73 @@
+/*通用白色面板*/
+.common-panel {
+  box-sizing: border-box;
+  border: 1px solid rgba(232, 232, 232, 1);
+  background-color: #fff;
+  box-shadow: 1px 1px 1px rgba(204, 204, 204, 0.349019607843137);
+}
+/*通用折叠tabs*/
+.common-collapse-tab {
+  .turn {
+    transform: rotate(-90deg);
+  }
+  /deep/ .el-tabs__item {
+    position: static;
+    height: 67px;
+    text-align: center;
+    line-height: 67px;
+    .arrow {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      right: 20px;
+      top: 50%;
+      margin-top: -7px;
+      transition: transform 0.3s, -webkit-transform 0.3s;
+    }
+  }
+  /deep/ .el-tabs__item.is-focus.is-active {
+    box-shadow: none !important;
+  }
+  /deep/ .el-tabs__nav {
+    position: static;
+    float: none;
+    .is-active {
+      .arrow {
+        display: inline-block;
+      }
+    }
+  }
+  /deep/ .el-tabs__nav-scroll {
+    box-sizing: border-box;
+    padding-left: 20px;
+  }
+  /deep/ .el-tabs__nav-wrap::after {
+    height: 1px;
+  }
+  /deep/ .el-tabs__header {
+    margin: 0px;
+  }
+  /deep/ .el-tab-pane {
+    box-sizing: border-box;
+    padding: 0px;
+    overflow: hidden;
+  }
+}
+/*通用底部固定按钮区域*/
+.common-bottom-fixed-area {
+  height: 60px;
+  width: calc(100% - 220px);
+  position: fixed;
+  bottom: 0px;
+  left: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  .orange {
+    background-color: rgba(255, 153, 0, 1);
+    border: 1px solid rgba(255, 153, 0, 1);
+  }
+}

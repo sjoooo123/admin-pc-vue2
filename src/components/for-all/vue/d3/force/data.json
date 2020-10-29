@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "name": "张三",
+      "type": "first"
+    },
+    {
+      "id": 2,
+      "name": "王五",
+      "type": "second"
+    },
+    {
+      "id": 3,
+      "name": "李四",
+      "type": "third"
+    },
+    {
+      "id": 4,
+      "name": "刘六",
+      "type": "first"
+    }
+  ],
+  "links": [
+    {
+      "source": 1,
+      "target": 2,
+      "label": "50"
+    },
+    {
+      "source": 1,
+      "target": 3,
+      "label": "50"
+    },
+    {
+      "source": 1,
+      "target": 4,
+      "label": "50"
+    }
+  ]
+}
