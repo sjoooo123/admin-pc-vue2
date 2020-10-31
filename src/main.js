@@ -12,7 +12,7 @@ import "@/assets/css/common.scss";
 import "@/assets/iconfont/iconfont.css";
 import "@/assets/css/element-variables.scss"; // 主题色修改文件
 
-// 线上启用模拟数据-测试部署
+// 线上启用模拟数据
 const mock = true;
 if(mock){
   require('@/mock/index.js');
