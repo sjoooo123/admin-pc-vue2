@@ -1,23 +1,26 @@
+const path = require("path");
+// const apiMocker = require("webpack-api-mocker");
+
 module.exports = {
-  publicPath: "/",
-  lintOnSave: true,
-  productionSourceMap: false,
-  devServer: {
-    proxy: {
-      // 图片
-      "/jpt/images": {
-        target: "http://192.168.13.150:30010", // 开发服务器
-        changeOrigin: false,
-        ws: false
-      },
-      // 通用接口
-      "/": {
-        // target: "http://192.168.13.201:20690", // 开发服务器,
-        target: "http://localhost:5300", // mock服务器
-        changeOrigin: false,
-        ws: false
-      }
-    },
-    disableHostCheck: true
+  publicPath: process.env.VUE_APP_PUBLIC_PATH,
+  configureWebpack: {
+    devServer: {
+      disableHostCheck: true, // 花生壳使用
+      // 代理配置
+      // proxy: {
+      //   "/api": {
+      //     // target: "http://192.168.13.89:100", // 后端服务
+      //     target: "http://localhost:9999", // node服务，mock默认端口9999
+      //     changeOrigin: true,
+      //     pathRewrite: {
+      //       // '^/api': ''
+      //     }
+      //   },
+      // },
+      // 数据模拟
+      // before(app) {
+      //   apiMocker(app, path.resolve(__dirname, "./mock/static/index.js"));
+      // }
+    }
   }
 };

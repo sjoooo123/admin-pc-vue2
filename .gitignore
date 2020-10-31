@@ -5,6 +5,7 @@ node_modules
 # local env files
 .env.local
 .env.*.local
+*.development
 .vscode
 
 # Log files
@@ -20,3 +21,6 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# mock
+/mock

@@ -7,5 +7,4 @@ ret.forEach(item => {
     svc[key] = item[key];
   }
 });
-
 export default svc;

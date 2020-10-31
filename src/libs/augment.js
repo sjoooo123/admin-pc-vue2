@@ -72,7 +72,9 @@ import {
   Divider,
   Timeline,
   TimelineItem,
-  Calendar
+  Calendar,
+  Avatar,
+  Popconfirm
 } from "element-ui";
 import "element-ui/lib/theme-chalk/base.css";
 import CollapseTransition from "element-ui/lib/transitions/collapse-transition";
@@ -82,9 +84,10 @@ import echarts from "echarts";
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 import VueUeditorWrap from "vue-ueditor-wrap";
-import MyTable from "@/components/for-all/element-ui/myTable";
-import Echart from "@/components/for-all/vue/echart";
-import baiduMap from "@/components/for-all/vue/baiduMap";
+import svc from "@/service";
+import MyTable from "@/components/element-ui/myTable";
+import Echart from "@/components/vue/echart";
+import baiduMap from "@/components/vue/baiduMap";
 import * as d3 from "d3";
 
 // 注册第三方组件
@@ -158,6 +161,8 @@ Vue.use(Timeline);
 Vue.use(TimelineItem);
 Vue.use(Calendar);
 Vue.use(Divider);
+Vue.use(Avatar);
+Vue.use(Popconfirm);
 Vue.use(Loading.directive);
 // 注册element（折叠展开动画）组件
 Vue.component(CollapseTransition.name, CollapseTransition);
@@ -182,6 +187,7 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 // vue对象原型扩展-其他
+Vue.prototype.$svc = svc;
 Vue.prototype.$lodash = lodash;
 Vue.prototype.$moment = moment;
 Vue.prototype.$echarts = echarts;

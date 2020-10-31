@@ -3,7 +3,7 @@
     <el-tab-pane label="柱状图">
       <el-tabs>
         <el-tab-pane label="动态数据">
-          <Echart id="chart-bar-1" :optionFun="getBar1Option" :svcFunString="'getChartBar1TestData'" width="500px" height="300px" />
+          <Echart id="chart-bar-1" :optionFun="getBar1Option" :svcFunString="'api_echart_bar1_get'" width="500px" height="300px" />
         </el-tab-pane>
         <el-tab-pane label="静态数据">
           <Echart id="chart-bar-2" :optionFun="getBar1Option" :outerData="staticData" width="500px" height="300px" />
@@ -37,14 +37,14 @@
 </template>
 
 <script>
-import { getBar1Option } from "@/components/for-all/vue/echart/options/bar.js";
-import { getLine1Option } from "@/components/for-all/vue/echart/options/line.js";
-import { getPie1Option } from "@/components/for-all/vue/echart/options/pie.js";
+import { getBar1Option } from "@/components/vue/echart/options/bar.js";
+import { getLine1Option } from "@/components/vue/echart/options/line.js";
+import { getPie1Option } from "@/components/vue/echart/options/pie.js";
 // map图表
-import { getChinaMap1Option } from "@/components/for-all/vue/echart/options/map/china.js";
-import { getWorldMap1Option } from "@/components/for-all/vue/echart/options/map/world.js";
-import { getBMap1Option } from "@/components/for-all/vue/echart/options/map/BMap.js";
-import { getProvincesMapHKOption } from "@/components/for-all/vue/echart/options/map/province.js";
+import { getChinaMap1Option } from "@/components/vue/echart/options/map/china.js";
+import { getWorldMap1Option } from "@/components/vue/echart/options/map/world.js";
+import { getBMap1Option } from "@/components/vue/echart/options/map/BMap.js";
+import { getProvincesMapHKOption } from "@/components/vue/echart/options/map/province.js";
 export default {
   data() {
     return {

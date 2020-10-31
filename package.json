@@ -14,6 +14,7 @@
     "echarts": "^4.6.0",
     "element-ui": "^2.13.0",
     "lodash": "^4.17.15",
+    "mockjs": "^1.1.0",
     "moment": "^2.24.0",
     "nprogress": "^0.2.0",
     "sockjs-client": "^1.4.0",
@@ -25,7 +26,8 @@
     "vue-seamless-scroll": "^1.1.17",
     "vue-ueditor-wrap": "^2.4.1",
     "vuedraggable": "^2.23.2",
-    "vuex": "^3.1.2"
+    "vuex": "^3.1.2",
+    "webpack-api-mocker": "^1.7.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.2",

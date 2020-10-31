@@ -1,3 +1,10 @@
+/* 样式重置 */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+p{ margin: 0;}
 /*滚动条样式调整*/
 *::-webkit-scrollbar {
   /*滚动条整体样式*/

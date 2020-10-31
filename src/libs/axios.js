@@ -5,32 +5,16 @@ const qs = require("qs");
 // 添加请求拦截器
 axios.interceptors.request.use(
   function(request) {
-    // 在发送请求之前做些什么
-    // 前端控制失效时间10分钟
-    const now = vue.$moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
-    const lrt = localStorage.getItem("lastrequesttime");
-    if (lrt) {
-      const m1 = vue.$moment(now);
-      const m2 = vue.$moment(lrt);
-      const m = m1.diff(m2, "minute");
-      // 10分钟则清空token
-      if (m >= 30) {
-        localStorage.removeItem("token");
-      }
-    }
-    localStorage.setItem("lastrequesttime", now);
-
-    // 在发送请求之前的处理
-    // 排除不需要携带token的接口
+    // 没有参数统一添加空对象
+    request.data = request.data || {};
+    // 在发送请求之前的处理-
     if (request.url !== "/user/login") {
-      // 注入token
       const token = localStorage.getItem("token");
-      request.headers.Authorization = token || "bearer xx";
+      token && (request.headers.token = token);
     }
     return request;
   },
   function(error) {
-    // 对请求错误做些什么
     vue.$alert(error, "请求错误", { type: "error" });
     return Promise.reject(error);
   }
@@ -39,24 +23,30 @@ axios.interceptors.request.use(
 // 添加响应拦截器
 axios.interceptors.response.use(
   function(response) {
-    // 对响应数据做点什么
-    // 业务失败
-    if (response.data.code !== "000000") {
-      // token失效或者不存在
-      const errCodeList = ["105001", "105002"];
+    // code
+    /**
+     * + 0 成功
+      + 101 用户未登录
+      + 404 访问地址错误
+      + 500 系统错误
+      + 601 token过期
+      + 10000 后端返回提示，直接输出
+      + 10001 数据错误OR数据没找到
+      + 10002 数据验证失败
+     */
+    if (response.data.code != 0) {
+      const errCodeList = [101, 601];
       if (errCodeList.includes(response.data.code)) {
         vue.$router.push("/login");
         return;
       }
-      response.err = {
-        showAlert: () =>
-          vue.$alert(response.data.msg, "提示", { type: "error" })
-      };
+      vue.$alert(response.data.info, "提示", { type: "error" })
+      return;
     }
+    console.log(response.config.url, response.data); // 线上静态数据调用打印
     return response;
   },
   function(error) {
-    // 对响应错误做点什么
     vue.$alert(error, "响应错误", { type: "error" });
     return Promise.reject(error);
   }
@@ -68,10 +58,12 @@ export default {
     return new Promise((resolve, reject) => {
       axios({
         method: "get",
-        url,
-        params: param
+        url: process.env.VUE_APP_API_PREFIX + url,
+        params: param,
       }).then(res => {
         resolve(res);
+      }).catch(err => {
+        reject(err);
       });
     });
   },
@@ -80,10 +72,12 @@ export default {
     return new Promise((resolve, reject) => {
       axios({
         method: "post",
-        url,
-        data: param
+        url: process.env.VUE_APP_API_PREFIX + url,
+        data: param,
       }).then(res => {
         resolve(res);
+      }).catch(err => {
+        reject(err);
       });
     });
   },
@@ -92,20 +86,22 @@ export default {
     return new Promise((resolve, reject) => {
       axios({
         method: "post",
-        url,
+        url: process.env.VUE_APP_API_PREFIX + url,
         data: param,
         headers: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
         }
       }).then(res => {
         resolve(res);
+      }).catch(err => {
+        reject(err);
       });
     });
   },
   put(url, param, isFormData = false) {
     let config = {
       method: "put",
-      url,
+      url: process.env.VUE_APP_API_PREFIX + url,
       data: param
     };
     if (isFormData) {
@@ -117,6 +113,8 @@ export default {
     return new Promise((resolve, reject) => {
       axios(config).then(res => {
         resolve(res);
+      }).catch(err => {
+        reject(err);
       });
     });
   },
@@ -125,7 +123,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios({
         method: method,
-        url,
+        url: process.env.VUE_APP_API_PREFIX + url,
         data: param,
         responseType: "blob",
         headers: {
@@ -133,6 +131,8 @@ export default {
         }
       }).then(res => {
         resolve(res);
+      }).catch(err => {
+        reject(err);
       });
     });
   },
@@ -140,10 +140,12 @@ export default {
     return new Promise((resolve, reject) => {
       axios({
         method: "delete",
-        url,
+        url: process.env.VUE_APP_API_PREFIX + url,
         params: param
       }).then(res => {
         resolve(res);
+      }).catch(err => {
+        reject(err);
       });
     });
   }
