@@ -10,7 +10,7 @@
   "dependencies": {
     "@riophae/vue-treeselect": "0.4.0",
     "core-js": "^3.6.4",
-    "d3": "^5.15.0",
+    "d3": "^6.3.1",
     "echarts": "^4.6.0",
     "element-ui": "^2.13.0",
     "lodash": "^4.17.15",

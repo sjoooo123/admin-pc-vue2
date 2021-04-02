@@ -88,7 +88,7 @@ import svc from "@/service";
 import MyTable from "@/components/element-ui/myTable";
 import Echart from "@/components/vue/echart";
 import baiduMap from "@/components/vue/baiduMap";
-import * as d3 from "d3";
+import MyDialog from "@/components/element-ui/dialog/"
 
 // 注册第三方组件
 // 注册element通用组件
@@ -177,6 +177,7 @@ Vue.component(baiduMap.name, baiduMap);
 Vue.component(MyTable.name, MyTable);
 // 注册图表组件
 Vue.component(Echart.name, Echart);
+Vue.component(MyDialog.name,MyDialog)
 
 // vue对象原型扩展-element-ui
 Vue.prototype.$loading = Loading.service;
@@ -191,4 +192,3 @@ Vue.prototype.$svc = svc;
 Vue.prototype.$lodash = lodash;
 Vue.prototype.$moment = moment;
 Vue.prototype.$echarts = echarts;
-Vue.prototype.$d3 = d3;

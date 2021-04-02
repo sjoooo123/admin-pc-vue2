@@ -57,7 +57,6 @@ export default {
         password: this.loginForm.password
       };
       this.submitting = true;
-      console.log(this)
       const res = await this.$svc.login_post(params);
       this.submitting = false;
       if(!res) return; // res为undefined，出错中止
