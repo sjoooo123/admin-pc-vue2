@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/admin-pc/favicon.ico"><title>pc端通用管理平台</title><meta name="renderer" content="webkit"><meta name="force-rendering" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script>/*@cc_on window.location.href="http://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); @*/</script><link href="/admin-pc/css/chunk-02218fa2.18afc71d.css" rel="prefetch"><link href="/admin-pc/css/chunk-0fcc82aa.133c1951.css" rel="prefetch"><link href="/admin-pc/css/chunk-16a897e4.53bdb428.css" rel="prefetch"><link href="/admin-pc/css/chunk-20ae3ef0.9b85a148.css" rel="prefetch"><link href="/admin-pc/css/chunk-4593cc57.570952ed.css" rel="prefetch"><link href="/admin-pc/css/chunk-473603d0.f1952bee.css" rel="prefetch"><link href="/admin-pc/css/chunk-70c3a20a.eadc9f55.css" rel="prefetch"><link href="/admin-pc/css/chunk-f32a6f1a.795e1044.css" rel="prefetch"><link href="/admin-pc/js/chunk-02218fa2.7483c4f9.js" rel="prefetch"><link href="/admin-pc/js/chunk-09045366.d8923b82.js" rel="prefetch"><link href="/admin-pc/js/chunk-0fcc82aa.5899913c.js" rel="prefetch"><link href="/admin-pc/js/chunk-16a897e4.e39633f3.js" rel="prefetch"><link href="/admin-pc/js/chunk-20ae3ef0.851aee83.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0aba2f.8b158fd3.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0bd7b2.d4ab4982.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0c5b28.5ff84e0a.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0c8a76.d0683ce6.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0c8c20.ac4b8efe.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0cc2ee.a68de364.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0d0093.f6c4058d.js" rel="prefetch"><link href="/admin-pc/js/chunk-2d0d72b3.cbd93c6f.js" rel="prefetch"><link href="/admin-pc/js/chunk-4593cc57.73f896da.js" rel="prefetch"><link href="/admin-pc/js/chunk-473603d0.b6219431.js" rel="prefetch"><link href="/admin-pc/js/chunk-70c3a20a.680eb67a.js" rel="prefetch"><link href="/admin-pc/js/chunk-f32a6f1a.cb357ba9.js" rel="prefetch"><link href="/admin-pc/css/app.b4e261f7.css" rel="preload" as="style"><link href="/admin-pc/css/chunk-vendors.094738d5.css" rel="preload" as="style"><link href="/admin-pc/js/app.c6d4c7f9.js" rel="preload" as="script"><link href="/admin-pc/js/chunk-vendors.d15a10c7.js" rel="preload" as="script"><link href="/admin-pc/css/chunk-vendors.094738d5.css" rel="stylesheet"><link href="/admin-pc/css/app.b4e261f7.css" rel="stylesheet"></head><body><noscript><strong>对不起，您的浏览器不支持 javaScript 或浏览器已禁止执行JavaScript脚本，请打开浏览器执行 JavaScript脚本的权限或更换浏览器后访问。</strong></noscript><div id="app"></div><script>//内置对象扩展
+      //时间格式化
+      Date.prototype.format = function(format) {
+        var args = {
+          "M+": this.getMonth() + 1,
+          "d+": this.getDate(),
+          "h+": this.getHours(),
+          "m+": this.getMinutes(),
+          "s+": this.getSeconds(),
+          "q+": Math.floor((this.getMonth() + 3) / 3), //quarter
+          S: this.getMilliseconds()
+        };
+        if (/(y+)/.test(format))
+          format = format.replace(
+            RegExp.$1,
+            (this.getFullYear() + "").substr(4 - RegExp.$1.length)
+          );
+        for (var i in args) {
+          var n = args[i];
+          if (new RegExp("(" + i + ")").test(format))
+            format = format.replace(
+              RegExp.$1,
+              RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length)
+            );
+        }
+        return format;
+      };
+      String.prototype.trim = function() {
+        return this.replace(/(^\s*)|(\s*$)/g, "");
+      };
+      Number.prototype.format = function() {
+        var num = this;
+        if (!/^(\+|-)?\d+(\.\d+)?$/.test(num)) {
+          return num;
+        }
+        // var re = new RegExp().compile("(\\d)(\\d{3})(,|\\.|$)");
+        var re = /(\d)(\d{3})(,|\.|$)/;
+        num += "";
+        while (re.test(num)) {
+          num = num.replace(re, "$1,$2$3");
+        }
+        return num;
+      };</script><script src="https://api.map.baidu.com/api?v=3.0&ak=UAumsTfvpKBlNPUd9e5PvAEnR0YGNllO"></script><script src="https://webapi.amap.com/maps?v=1.4.15&key=40d492c02de2b10f9b24ec61556df007&plugin=Map3D,AMap.DistrictSearch"></script><script src="/admin-pc/js/chunk-vendors.d15a10c7.js"></script><script src="/admin-pc/js/app.c6d4c7f9.js"></script></body></html>
