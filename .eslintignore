@@ -1,0 +1,4 @@
+/src/assets/**/*.js
+/src/components/vue/echart/options/map/**/*.js
+/src/mock/**/*.js
+/src/service/api/**/*.js

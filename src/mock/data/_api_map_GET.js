@@ -1,4 +1,5 @@
 const Mock = require("mockjs");
+
 Mock.mock("/api/map", {
     "code": 0,
     "info": "成功",

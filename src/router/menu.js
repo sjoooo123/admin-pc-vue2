@@ -13,7 +13,7 @@ let menus = [
             title: "首页",
             icon: "el-icon-s-home",
             // isHot: true, // 热门标识
-            affix: true, // 附加标识:默认存在，不能关闭
+            affix: true // 附加标识:默认存在，不能关闭
             // target: '_blank', // 新窗口打开
 
         },
@@ -128,9 +128,9 @@ let menus = [
                 meta: {
                     title: "高德地图（新窗口）",
                     icon: "el-icon-edit",
-                    target: '_blank', // 新窗口打开
+                    target: '_blank' // 新窗口打开
                 },
-                redirect: "/amap",
+                redirect: "/amap"
             },
             {
                 path: "/componentDemo/dialog",
@@ -138,10 +138,10 @@ let menus = [
                 name: "componentDemo_dialog",
                 meta: {
                     title: "弹窗",
-                    icon: "el-icon-edit",
+                    icon: "el-icon-edit"
                 },
                 component: () => import("@/views/home/componentDemo/dialog")
-            },
+            }
         ]
     },
     {
@@ -166,14 +166,14 @@ let menus = [
                 component: () => import("@/views/home/d3/bar")
             },
             {
-              path: "/d3/force",
-              id: 31,
-              name: "d3_force",
-              meta: {
-                title: "力导向图",
-                icon: "el-icon-edit"
-              },
-              component: () => import("@/views/home/d3/force")
+                path: "/d3/force",
+                id: 31,
+                name: "d3_force",
+                meta: {
+                    title: "力导向图",
+                    icon: "el-icon-edit"
+                },
+                component: () => import("@/views/home/d3/force")
             }
         ]
     }
@@ -182,22 +182,24 @@ let menus = [
 // 遍历修改菜单属性
 const filterFun = (menu) => {
     for (let i = 0, l = showMenus.length; i < l; i++) {
-        if (showMenus[i].id == menu.id) {
+        if (showMenus[i].id === menu.id) {
             menu.meta.title = showMenus[i].name;
             break;
         }
     }
 }
-let paths = []; // 记录非新窗口打开的路由
-let pathsBlank = []; // 记录新窗口打开的路由
+
+let paths = [], // 记录非新窗口打开的路由
+    pathsBlank = []; // 记录新窗口打开的路由
+
 menus.forEach(menu => {
-    menu.meta.target == '_blank' ? pathsBlank.push(menu.path) : paths.push(menu.path);
+    menu.meta.target === '_blank' ? pathsBlank.push(menu.path) : paths.push(menu.path);
     // 遍历修改菜单属性
     filterFun(menu);
 
     if (menu.children) {
         menu.children.forEach(c => {
-            c.meta.target == '_blank' ? pathsBlank.push(c.path) : paths.push(c.path);
+            c.meta.target === '_blank' ? pathsBlank.push(c.path) : paths.push(c.path);
             // 遍历修改菜单属性
             filterFun(c);
         })

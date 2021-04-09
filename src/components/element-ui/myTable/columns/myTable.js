@@ -4,9 +4,9 @@
  */
 export default function () {
     return [
-        // 表格测试
+    // 表格测试
         { columnName: "myTable_date", prop: "date", label: "日期", align: "center", width: 180 },
         { columnName: "myTable_address", prop: "address", label: "地址", minWidth: 180 },
-        { columnName: "myTable_name", prop: "name", label: "姓名", align: "center", width: 120 },
+        { columnName: "myTable_name", prop: "name", label: "姓名", align: "center", width: 120 }
     ];
 }

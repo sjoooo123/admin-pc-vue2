@@ -1,5 +1,5 @@
 import axios from "@/libs/axios";
-// 
+//
 export const login_post = (...args) => axios.post("/api/login", ...args); // 登录
 export const admin_user_resPass_post = (...args) => axios.post("/api/admin/user/resPass", ...args); // 修改密码
 export const admin_user_logout_get = (...args) => axios.get("/api/admin/user/logout", ...args); // 退出登录

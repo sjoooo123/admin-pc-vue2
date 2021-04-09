@@ -1,4 +1,5 @@
 const Mock = require("mockjs");
+
 Mock.mock("/api/tree", {
     code: 0,
     info: "成功",

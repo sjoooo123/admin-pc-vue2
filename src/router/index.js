@@ -13,6 +13,7 @@ Vue.use(Router);
 //获取原型对象上的push函数
 const originalPush = Router.prototype.push
 //修改原型对象中的push方法
+
 Router.prototype.push = function push (location) {
     return originalPush.call(this, location).catch(err => err)
 }
@@ -37,30 +38,30 @@ const router = new Router({
             path: "/amap",
             component: () => import("@/views/home/componentDemo/amap"),
             meta: {
-                title: "高德地图",
-            },
+                title: "高德地图"
+            }
         },
         {
             path: "/404",
             component: () => import("@/views/404")
-        },
-    ],
+        }
+    ]
     // mode: "history" // 除去#号，部署gitee不需要
 });
 
 router.beforeEach((to, from, next) => {
     if (to.matched.length === 0) {
-        next({ path: "/404" });
-    } else {
-        NProgress.start();
-        next();
+        return next({ path: "/404" });
     }
+    NProgress.start();
+    return next();
+
 });
 router.afterEach(to => {
     NProgress.done();
 
     // 添加菜单tags
-    if (paths.includes(to.path) && to.path != '/empty') {
+    if (paths.includes(to.path) && to.path !== '/empty') {
         router.app.$store.dispatch("tagsView/addView", to);
         router.app.$store.commit("tagsView/setCurrentView", to);
     }

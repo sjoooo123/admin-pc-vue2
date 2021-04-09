@@ -1,4 +1,5 @@
 const Mock = require("mockjs");
+
 Mock.mock("/api/admin/user/self", {
     "code": 0,
     "info": "成功",
@@ -28,7 +29,7 @@ Mock.mock("/api/admin/user/self", {
             { "id": 29, "name": "弹窗" },
             { "id": 3, "name": "d3" },
             { "id": 30, "name": "柱状图" },
-            {"id": 31, "name": "力导向图"},
+            {"id": 31, "name": "力导向图"}
         ]
     },
     "url": ""

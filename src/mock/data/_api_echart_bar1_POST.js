@@ -1,4 +1,5 @@
 const Mock = require("mockjs");
+
 Mock.mock("/api/echart/bar1", {
     code: 0,
     info: "成功",

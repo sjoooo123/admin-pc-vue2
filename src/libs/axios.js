@@ -5,12 +5,13 @@ const qs = require("qs");
 // 添加请求拦截器
 axios.interceptors.request.use(
     function (request) {
-        // 没有参数统一添加空对象
+    // 没有参数统一添加空对象
         request.data = request.data || {};
         // 在发送请求之前的处理-
         if (request.url !== "/user/login") {
             const token = localStorage.getItem("token");
-            token && (request.headers.token = token);
+
+            request.headers.token = token || undefined;
         }
         return request;
     },
@@ -23,8 +24,8 @@ axios.interceptors.request.use(
 // 添加响应拦截器
 axios.interceptors.response.use(
     function (response) {
-        // code
-        /**
+    // code
+    /**
          * + 0 成功
           + 101 用户未登录
           + 404 访问地址错误
@@ -34,8 +35,9 @@ axios.interceptors.response.use(
           + 10001 数据错误OR数据没找到
           + 10002 数据验证失败
          */
-        if (response.data.code != 0) {
+        if (response.data.code !== 0) {
             const errCodeList = [101, 601];
+
             if (errCodeList.includes(response.data.code)) {
                 vue.$router.push("/login");
                 return;
@@ -43,7 +45,8 @@ axios.interceptors.response.use(
             vue.$alert(response.data.info, "提示", { type: "error" })
             return;
         }
-        console.log(response.config.url, response.data); // 线上静态数据调用打印
+        // 线上静态数据调用打印
+        console.log(response.config.url, response.data); // eslint-disable-line
         return response;
     },
     function (error) {
@@ -59,7 +62,7 @@ export default {
             axios({
                 method: "get",
                 url: process.env.VUE_APP_API_PREFIX + url,
-                params: param,
+                params: param
             }).then(res => {
                 resolve(res);
             }).catch(err => {
@@ -73,7 +76,7 @@ export default {
             axios({
                 method: "post",
                 url: process.env.VUE_APP_API_PREFIX + url,
-                data: param,
+                data: param
             }).then(res => {
                 resolve(res);
             }).catch(err => {
@@ -89,7 +92,7 @@ export default {
                 url: process.env.VUE_APP_API_PREFIX + url,
                 data: param,
                 headers: {
-                    "Content-Type": "multipart/form-data",
+                    "Content-Type": "multipart/form-data"
                 }
             }).then(res => {
                 resolve(res);
@@ -104,6 +107,7 @@ export default {
             url: process.env.VUE_APP_API_PREFIX + url,
             data: param
         };
+
         if (isFormData) {
             config.headers = {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -148,5 +152,5 @@ export default {
                 reject(err);
             });
         });
-    },
+    }
 };

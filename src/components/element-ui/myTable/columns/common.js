@@ -31,7 +31,8 @@ export default function (target) {
             columnName: "sex_txt", label: "性别", align: "center", width: 80,
             render: function (h, context) {
                 let style;
-                if (context.row.sex == 1) {
+
+                if (context.row.sex === 1) {
                     style = "color: green";
                 } else {
                     style = "color: red";
@@ -74,6 +75,6 @@ export default function (target) {
                     </div>
                 );
             }
-        },
+        }
     ];
 }

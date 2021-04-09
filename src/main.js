@@ -14,15 +14,17 @@ import "@/assets/css/element-variables.scss"; // 主题色修改文件
 
 // 线上启用模拟数据
 const mock = true;
+
 if(mock){
-  require('@/mock/index.js');
+    require('@/mock/index.js');
 }
 
 Vue.config.productionTip = false;
 
 let vue = new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount("#app");
+
 export default vue;

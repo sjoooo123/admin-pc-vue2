@@ -109,7 +109,7 @@ export default {
   },
   methods: {
     ...mapMutations({
-      clear_views: "tagsView/clear_views",
+      CLEAR_VIEWS: "tagsView/CLEAR_VIEWS",
     }),
     dropdownMenuCommand(command) {
       // 修改密码
@@ -149,7 +149,7 @@ export default {
     },
     async logout(){
       // 清空状态
-      this.clear_views();
+      this.CLEAR_VIEWS();
       localStorage.removeItem("token");
       this.$router.push({path: '/login'});
     }

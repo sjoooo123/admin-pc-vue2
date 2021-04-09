@@ -1,48 +1,48 @@
 const state = {
-  shopCategories: [],
-  jdCategories: [],
-  jdImageCategory: [],
-  baseConfig: {},
-  detailConfig: {},
-  filterConfig: {}
-};
+        shopCategories: [],
+        jdCategories: [],
+        jdImageCategory: [],
+        baseConfig: {},
+        detailConfig: {},
+        filterConfig: {}
+    },
 
-const getters = {
-  getShopCates: state => state.shopCategories,
-  getJdCates: state => state.jdCategories,
-  getJdImageCategory: state => state.jdImageCategory,
-  getBaseConfig: state => state.baseConfig,
-  getDetailConfig: state => state.detailConfig,
-  getFilterConfig: state => state.filterConfig
-};
+    getters = {
+        getShopCates: _state => _state.shopCategories,
+        getJdCates: _state => _state.jdCategories,
+        getJdImageCategory: _state => _state.jdImageCategory,
+        getBaseConfig: _state => _state.baseConfig,
+        getDetailConfig: _state => _state.detailConfig,
+        getFilterConfig: _state => _state.filterConfig
+    },
 
-const actions = {};
+    actions = {},
 
-const mutations = {
-  setShopCates: (state, payload) => {
-    state.shopCategories = payload;
-  },
-  setJdCates: (state, payload) => {
-    state.jdCategories = payload;
-  },
-  setJdImageCategory: (state, payload) => {
-    state.jdImageCategory = payload;
-  },
-  setBaseConfig: (state, payload) => {
-    state.baseConfig = payload;
-  },
-  setDetailConfig: (state, payload) => {
-    state.detailConfig = payload;
-  },
-  setFilterConfig: (state, payload) => {
-    state.filterConfig = payload;
-  }
-};
+    mutations = {
+        setShopCates: (_state, payload) => {
+            _state.shopCategories = payload;
+        },
+        setJdCates: (_state, payload) => {
+            _state.jdCategories = payload;
+        },
+        setJdImageCategory: (_state, payload) => {
+            _state.jdImageCategory = payload;
+        },
+        setBaseConfig: (_state, payload) => {
+            _state.baseConfig = payload;
+        },
+        setDetailConfig: (_state, payload) => {
+            _state.detailConfig = payload;
+        },
+        setFilterConfig: (_state, payload) => {
+            _state.filterConfig = payload;
+        }
+    };
 
 export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
+    namespaced: true,
+    state,
+    getters,
+    actions,
+    mutations
 };
